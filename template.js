@@ -1,4 +1,21 @@
-// Utilities similar to WordPress' wp.template().
+/**
+ * Utilities similar to WordPress' wp.template(). Provides option to load from a tmpl-<id> script tag,
+ * or to pass in arbitrary html.
+ *
+ * Compiled templates are memoized and cached for reuse, based on the tmplName.
+ *
+ * Example usage:
+ *
+ * var template = require( './template.js' )(); // Instantiate the template object to a var.
+ * var html = template( 'hello-world', { hello: 'Hello World' }, '<h1>{{ data.hello }}</h1>' );
+ *
+ * // The 'hello-world' template is now cached, so we can simply reference by ID, rather than passing the HTML in again.
+ * var html2 = template( 'hello-world', { hello: 'Hello Universe' } );
+ *
+ * @param  {string} string An html string.
+ *                         For example, '<div>{{ data.helloWord }}</div>'.
+ * @return {function}      A function that lazily-compiles the template requested.
+ */
 module.exports = function( gethtml ) {
 	gethtml = gethtml || ( function( $ ) {
 		return function( id ) {
