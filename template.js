@@ -11,7 +11,7 @@ module.exports = function( gethtml ) {
 	 * Underscore's default ERB-style templates are incompatible with PHP
 	 * when asp_tags is enabled, so WordPress uses Mustache-inspired templating syntax.
 	 *
-	 * @see trac ticket #22344.
+	 * @see trac ticket: https://core.trac.wordpress.org/ticket/22344.
 	 */
 	var options = {
 		evaluate    : /<#([\s\S]+?)#>/g,
