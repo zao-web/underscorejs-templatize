@@ -37,8 +37,6 @@ module.exports = function( prefix, gethtml ) {
 	};
 
 	/**
-	 * wp.template() replacement.
-	 *
 	 * Fetch a JavaScript template for a string of html, id it, then return a templating function for it.
 	 *
 	 * @param  {string} id   A string that corresponds to the html cache array.
