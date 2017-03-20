@@ -4,7 +4,9 @@ _templatize
 Utilities similar to WordPress' wp.template(). Provides option to load from a <prefix><id> script tag,
 or to pass in arbitrary html.
 
-Compiled templates are memoized and cached for reuse, based on the tmplName.
+Compiled templates are memoized and cached for reuse, based on the `tmplName`.
+
+If you're using PHP, you may also want to check out [wp.template-for-php](https://github.com/jtsternberg/wp.template-for-php) as a way to reuse the templates on the server side.
 
 ### Example usage:
 
