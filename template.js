@@ -37,6 +37,14 @@ module.exports = function( gethtml, prefix ) {
 		variable    : 'data'
 	};
 
+	/**
+	 * wp.template() replacement.
+	 *
+	 * Fetch a JavaScript template for a string of html, id it, then return a templating function for it.
+	 *
+	 * @param  {string} id   A string that corresponds to the html cache array.
+	 * @return {function}    A function that lazily-compiles the template requested.
+	 */
 	var htmlTemplate = _.memoize( function( id ) {
 		var compiled;
 		return function( data ) {
@@ -54,8 +62,7 @@ module.exports = function( gethtml, prefix ) {
 	 *
 	 * Fetch a JavaScript template for an id, and return a templating function for it.
 	 *
-	 * @param  {string} id   A string that corresponds to a DOM element with an id prefixed with "tmpl-".
-	 *                       For example, "attachment" maps to "tmpl-attachment".
+	 * @param  {string} id   A string that corresponds to a DOM element with an id prefixed with `prefix` ("tmpl-" by default).
 	 * @return {function}    A function that lazily-compiles the template requested.
 	 */
 	var scriptTemplate = _.memoize( function( id ) {
@@ -67,6 +74,17 @@ module.exports = function( gethtml, prefix ) {
 		};
 	} );
 
+	/**
+	 * Fetch a JavaScript template for an id or html string, and return the markup.
+	 *
+	 * Compiled templates are memoized and cached for reuse, based on the tmplName.
+	 *
+	 * @param  {string} tmplName   A string that corresponds to a DOM element with an id prefixed with
+	 * @param  {object} tmplData   The object containg the data to be injected to the template.
+	 * @param  {string} htmlString An html string to use for the template.
+	 *	                            For example, '<div>{{ data.helloWord }}</div>'.
+	 * @return {string}          html markup.
+	 */
 	function template( tmplName, tmplData, htmlString ) {
 
 		// Store this template object for later use.
