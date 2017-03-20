@@ -1,5 +1,5 @@
 /**
- * Utilities similar to WordPress' wp.template(). Provides option to load from a tmpl-<id> script tag,
+ * Utilities similar to WordPress' wp.template(). Provides option to load from a <prefix><id> script tag,
  * or to pass in arbitrary html.
  *
  * Compiled templates are memoized and cached for reuse, based on the tmplName.
@@ -12,11 +12,10 @@
  * // The 'hello-world' template is now cached, so we can simply reference by ID, rather than passing the HTML in again.
  * var html2 = template( 'hello-world', { hello: 'Hello Universe' } );
  *
- * @param  {string} string An html string.
- *                         For example, '<div>{{ data.helloWord }}</div>'.
- * @return {function}      A function that lazily-compiles the template requested.
+ * @param  {string}   prefix  The script tag id prefix. Defaults to "tmpl-".
+ * @param  {function} gethtml A function to fetch an element by id from the dom.
  */
-module.exports = function( gethtml, prefix ) {
+module.exports = function( prefix, gethtml ) {
 	gethtml = gethtml || ( function( $ ) {
 		return function( id ) {
 			id = document.getElementById( id );
@@ -75,7 +74,7 @@ module.exports = function( gethtml, prefix ) {
 	} );
 
 	/**
-	 * Fetch a JavaScript template for an id or html string, and return the markup.
+	 * Fetch a JavaScript template for an id or html string, and return the rendered markup.
 	 *
 	 * Compiled templates are memoized and cached for reuse, based on the tmplName.
 	 *
@@ -83,7 +82,7 @@ module.exports = function( gethtml, prefix ) {
 	 * @param  {object} tmplData   The object containg the data to be injected to the template.
 	 * @param  {string} htmlString An html string to use for the template.
 	 *	                            For example, '<div>{{ data.helloWord }}</div>'.
-	 * @return {string}          html markup.
+	 * @return {string}            The rendered html markup.
 	 */
 	function template( tmplName, tmplData, htmlString ) {
 
