@@ -9,7 +9,7 @@ window._templatize = window._templatize || ( function( window, document, _, unde
 	 *
 	 * Example usage:
 	 *
-	 * var template = require( './template.js' )(); // Instantiate the template object to a var.
+	 * var template = window._templatize(); // Instantiate the template object to a var.
 	 * var html = template( 'hello-world', { hello: 'Hello World' }, '<h1>{{ data.hello }}</h1>' );
 	 *
 	 * // The 'hello-world' template is now cached, so we can simply reference by ID, rather than passing the HTML in again.
