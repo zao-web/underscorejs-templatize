@@ -16,7 +16,7 @@
  *                         For example, '<div>{{ data.helloWord }}</div>'.
  * @return {function}      A function that lazily-compiles the template requested.
  */
-module.exports = function( gethtml ) {
+module.exports = function( gethtml, prefix ) {
 	gethtml = gethtml || ( function( $ ) {
 		return function( id ) {
 			id = document.getElementById( id );
@@ -62,7 +62,7 @@ module.exports = function( gethtml ) {
 		var compiled;
 
 		return function( data ) {
-			compiled = compiled || _.template( gethtml( 'tmpl-' + id ), options );
+			compiled = compiled || _.template( gethtml( ( prefix || 'tmpl-' ) + id ), options );
 			return compiled( data );
 		};
 	} );
