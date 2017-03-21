@@ -29,7 +29,7 @@ var html = template( 'your-js-template', tmplData );
 /**
  * html is now:
  * <h1>Hello World</h1>
- *	<h2>A fancy description</h2>
+ * <h2>A fancy description</h2>
  */
 ```
 
@@ -43,7 +43,7 @@ var html = template( 'hello-world', tmplData, '<h2>{{ data.title }}</h2><h3>{{ d
 /**
  * html is now:
  * <h2>Hello Github</h2>
- *	<h3>A fancy description</h3>
+ * <h3>A fancy description</h3>
  */
  
 // The 'hello-world' template is now cached, so we can simply reference by ID,
@@ -53,7 +53,7 @@ var html2 = template( 'hello-world', { hello: 'Hello Universe' } );
 /**
  * html2 is now:
  * <h2>Hello Universe</h2>
- *	<h3>A fancy description</h3>
+ * <h3>A fancy description</h3>
  */
 
 ```
