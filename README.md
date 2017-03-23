@@ -1,8 +1,8 @@
 _templatize
 ---
 
-Utilities similar to WordPress' wp.template(). Provides option to load from a <prefix><id> script tag,
-or to pass in arbitrary html.
+Utilities similar to WordPress' `wp.template()`. Provides option to load from a <prefix><id> script tag,
+or to pass in arbitrary html. For more imformation about how to use this script (or `wp.template()`), [Check out this post](http://zao.is/blog/2017/03/22/how-to-use-wp-template/).
 
 Compiled templates are memoized and cached for reuse, based on the `tmplName`.
 
